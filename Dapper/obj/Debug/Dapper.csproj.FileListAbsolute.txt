@@ -1,0 +1,8 @@
+E:\先进投标服务平台\新点标讯信息平台\Dapper\bin\Dapper.dll
+E:\先进投标服务平台\新点标讯信息平台\Dapper\bin\Dapper.pdb
+E:\先进投标服务平台\新点标讯信息平台\Dapper\obj\Debug\Dapper.dll
+E:\先进投标服务平台\新点标讯信息平台\Dapper\obj\Debug\Dapper.pdb
+D:\GitHub\NewtonsoftWCF\Dapper\bin\Dapper.dll
+D:\GitHub\NewtonsoftWCF\Dapper\bin\Dapper.pdb
+D:\GitHub\NewtonsoftWCF\Dapper\obj\Debug\Dapper.dll
+D:\GitHub\NewtonsoftWCF\Dapper\obj\Debug\Dapper.pdb

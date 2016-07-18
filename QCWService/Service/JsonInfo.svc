@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="QCWService.Service.BidInfo" CodeBehind="JsonInfo.svc.cs"%>
