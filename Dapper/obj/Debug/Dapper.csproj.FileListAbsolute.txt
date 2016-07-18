@@ -6,3 +6,4 @@ D:\GitHub\NewtonsoftWCF\Dapper\bin\Dapper.dll
 D:\GitHub\NewtonsoftWCF\Dapper\bin\Dapper.pdb
 D:\GitHub\NewtonsoftWCF\Dapper\obj\Debug\Dapper.dll
 D:\GitHub\NewtonsoftWCF\Dapper\obj\Debug\Dapper.pdb
+D:\GitHub\NewtonsoftWCF\Dapper\obj\Debug\Dapper.csprojResolveAssemblyReference.cache
