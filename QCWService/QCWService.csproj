@@ -83,7 +83,7 @@
     <Compile Include="Biz\Common.cs" />
     <Compile Include="Biz\ServiceUtil.cs" />
     <Compile Include="DB\DB_Base.cs" />
-    <Compile Include="Entity\CodeDic.cs" />
+    <Compile Include="Entity\ReturnStatus.cs" />
     <Compile Include="Entity\ReceiveData.cs" />
     <Compile Include="Entity\ReturnData.cs" />
     <Compile Include="Global.asax.cs">

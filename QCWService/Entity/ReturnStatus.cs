@@ -5,10 +5,6 @@ using System.Web;
 
 namespace QCWService.Entity
 {
-    public class CodeDic
-    {
-    }
-
     public enum ReturnStatus
     {
         True = 1,  // 程序与业务都没有报错
