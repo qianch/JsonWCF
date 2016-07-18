@@ -1,8 +1,7 @@
 .gitignore  
 *.rar 
 *.pdb
-*.dll
-*.vs 
+.vs/
 LogFiles/
 Log/
 IndexData/
