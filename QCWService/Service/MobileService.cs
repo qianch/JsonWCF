@@ -21,7 +21,7 @@ namespace QCWService.Service
         protected string startDate = "";
         protected string endDate = "";
         protected string areaCode = "";
-       
+
         public ReturnData DoService(ReceiveData receiveData)
         {
             return new ReturnData();
@@ -73,15 +73,16 @@ namespace QCWService.Service
             return int.Parse(pageSize);
         }
 
-        protected string dearJsonValue(string value)
+        protected string dearJsonValue(object value)
         {
-            if (string.IsNullOrEmpty(value) || value == "null")
+            string v = Convert.ToString(value);
+            if (string.IsNullOrEmpty(v) || v == "null")
             {
                 return "";
             }
             else
             {
-                return value;
+                return v;
             }
         }
     }

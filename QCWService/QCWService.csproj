@@ -98,14 +98,6 @@
     <Compile Include="Service\MobileService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Dapper\Dapper.csproj">
       <Project>{faa4e75a-c905-4c29-bef7-a8e845a4085c}</Project>
       <Name>Dapper</Name>
