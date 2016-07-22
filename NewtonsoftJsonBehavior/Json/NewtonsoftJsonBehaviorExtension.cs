@@ -4,7 +4,7 @@ using System.Linq;
 using System.ServiceModel.Configuration;
 using System.Web;
 
-namespace QCWService.Json
+namespace NewtonsoftJsonBehavior.Json
 {
     public class NewtonsoftJsonBehaviorExtension : BehaviorExtensionElement
     {

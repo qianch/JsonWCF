@@ -7,7 +7,7 @@ using System.ServiceModel.Dispatcher;
 using System.Text;
 using System.Xml;
 
-namespace QCWService.Json
+namespace NewtonsoftJsonBehavior.Json
 {
     class NewtonsoftJsonClientFormatter : IClientMessageFormatter
     {

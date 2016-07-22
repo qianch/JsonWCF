@@ -21,18 +21,7 @@ namespace QCWService.Service
         protected string startDate = "";
         protected string endDate = "";
         protected string areaCode = "";
-        protected Dictionary<string, string> typeDic = new Dictionary<string, string>
-        {
-            {"","" },
-            {"zhaojsgc","招标" },
-            {"zhaozfcg","招标" },
-            {"houjsgc","候选" },
-            {"houzfcg","候选" },
-            {"zhongjsgc","中标" },
-            {"zhongzfcg","中标" },
-            {"lixiang","核准" },
-            {"baddanwei","处罚" }
-        };
+       
         public ReturnData DoService(ReceiveData receiveData)
         {
             return new ReturnData();

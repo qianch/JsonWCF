@@ -7,7 +7,7 @@ using System.ServiceModel.Dispatcher;
 using System.ServiceModel.Web;
 using System.Web;
 
-namespace QCWService.Json
+namespace NewtonsoftJsonBehavior.Json
 {
     public class NewtonsoftJsonBehavior : WebHttpBehavior
     {

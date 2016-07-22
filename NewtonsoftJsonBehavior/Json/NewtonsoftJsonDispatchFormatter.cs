@@ -10,7 +10,7 @@ using System.Text;
 using System.Web;
 using System.Xml;
 
-namespace QCWService.Json
+namespace NewtonsoftJsonBehavior.Json
 {
     public class NewtonsoftJsonDispatchFormatter : IDispatchMessageFormatter
     {

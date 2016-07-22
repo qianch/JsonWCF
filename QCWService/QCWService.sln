@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QCWService", "QCWService.cs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dapper", "..\Dapper\Dapper.csproj", "{FAA4E75A-C905-4C29-BEF7-A8E845A4085C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewtonsoftJsonBehavior", "..\NewtonsoftJsonBehavior\NewtonsoftJsonBehavior.csproj", "{ED515B6A-56DA-49AC-AA93-086A496FA740}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{FAA4E75A-C905-4C29-BEF7-A8E845A4085C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FAA4E75A-C905-4C29-BEF7-A8E845A4085C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FAA4E75A-C905-4C29-BEF7-A8E845A4085C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED515B6A-56DA-49AC-AA93-086A496FA740}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED515B6A-56DA-49AC-AA93-086A496FA740}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED515B6A-56DA-49AC-AA93-086A496FA740}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED515B6A-56DA-49AC-AA93-086A496FA740}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
