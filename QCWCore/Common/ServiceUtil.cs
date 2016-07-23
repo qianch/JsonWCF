@@ -1,15 +1,14 @@
-﻿using QCWService.Entity;
-using log4net;
+﻿using log4net;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
 using Newtonsoft.Json;
 using System.Reflection;
-using QCWService.Service;
 using System.Diagnostics;
+using QCWCore.Entity;
 
-namespace QCWService.Biz
+namespace QCWCore.Common
 {
     public class ServiceUtil
     {

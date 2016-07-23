@@ -80,16 +80,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Biz\Common.cs" />
-    <Compile Include="Biz\ServiceUtil.cs" />
-    <Compile Include="DB\DB_Base.cs" />
-    <Compile Include="Entity\ReturnStatus.cs" />
-    <Compile Include="Entity\ReceiveData.cs" />
-    <Compile Include="Entity\ReturnData.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Interface\IMobileService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\JsonInfo.svc.cs">
       <DependentUpon>JsonInfo.svc</DependentUpon>
@@ -105,6 +98,10 @@
     <ProjectReference Include="..\NewtonsoftJsonBehavior\NewtonsoftJsonBehavior.csproj">
       <Project>{ed515b6a-56da-49ac-aa93-086a496fa740}</Project>
       <Name>NewtonsoftJsonBehavior</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QCWCore\QCWCore.csproj">
+      <Project>{6ce5ba0c-29e9-452a-a128-1b134f52d4b5}</Project>
+      <Name>QCWCore</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -1,6 +1,6 @@
-﻿using QCWService.Biz;
-using QCWService.Entity;
-using log4net;
+﻿using log4net;
+using QCWCore.Common;
+using QCWCore.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;

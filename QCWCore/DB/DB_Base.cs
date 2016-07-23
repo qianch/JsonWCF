@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace QCWService.DB
+namespace QCWCore.DB
 {
     public class DB_Base
     {

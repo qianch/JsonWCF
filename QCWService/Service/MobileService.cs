@@ -1,6 +1,5 @@
-﻿using QCWService.DB;
-using QCWService.Entity;
-using QCWService.Interface;
+﻿using QCWCore.Base;
+using QCWCore.Entity;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -10,9 +9,8 @@ using System.Web;
 
 namespace QCWService.Service
 {
-    public class MobileService : IMobileService
+    public class MobileService : BaseWService
     {
-        public static string detailUrl = System.Configuration.ConfigurationManager.AppSettings["Detail_url"];
         protected string validateData = "";
         protected string currentPageIndex = "";
         protected string pageSize = "20";
@@ -22,7 +20,7 @@ namespace QCWService.Service
         protected string endDate = "";
         protected string areaCode = "";
 
-        public ReturnData DoService(ReceiveData receiveData)
+        public override ReturnData DoService(ReceiveData receiveData)
         {
             return new ReturnData();
         }
