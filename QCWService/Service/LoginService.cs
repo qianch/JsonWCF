@@ -25,7 +25,7 @@ namespace QCWService.Service
             {
                 validateData = receiveData.ValidateData;
                 loginID = receiveData.GetParam("LoginID");
-                passWord = receiveData.GetParam("PassWord");
+                passWord = receiveData.GetParam("Password");
             }
             catch (Exception ex)
             {
@@ -47,7 +47,6 @@ namespace QCWService.Service
             ret.AddUserData("UserName", dearJsonValue("username"));
             ret.AddUserData("DanWeiGuid", dearJsonValue("danweiguid"));
             ret.AddUserData("DanWeiName", dearJsonValue("danweiname"));
-            ret.AddUserData("UserType", dearJsonValue("usrtype"));
             return ret;
         }
 
