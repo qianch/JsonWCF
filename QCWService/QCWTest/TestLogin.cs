@@ -23,7 +23,7 @@ namespace QCWTest
             paras.Add("Password", "loveyou");
             receive.Add("paras", paras);
 
-            //测试dowork
+            //测试UserLogin
             WebClient client = new WebClient();
             client.Headers["Content-Type"] = "application/json";
             var receiveJson = JsonConvert.SerializeObject(receive);

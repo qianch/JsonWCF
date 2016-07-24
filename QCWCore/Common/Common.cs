@@ -17,7 +17,7 @@ namespace QCWCore.Common
             //    return "非法调用";
             //}
 
-            //简单验证 h5页面无法生成复杂validateData，故简单约定一个validateData
+            //简单验证 约定一个validateData
             if (validateData != ValidateData)
             {
                 return "非法调用";
