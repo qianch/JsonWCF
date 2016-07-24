@@ -28,11 +28,11 @@ namespace Dapper.Contrib.Extensions
         private static readonly ConcurrentDictionary<RuntimeTypeHandle, string> TypeTableName = new ConcurrentDictionary<RuntimeTypeHandle, string>();
 
         private static readonly Dictionary<string, ISqlAdapter> AdapterDictionary = new Dictionary<string, ISqlAdapter>() {
-																							{"sqlconnection", new SqlServerAdapter()},
-																							{"npgsqlconnection", new PostgresAdapter()},
-																							{"sqliteconnection", new SQLiteAdapter()},
+                                                                                            {"sqlconnection", new SqlServerAdapter()},
+                                                                                            {"npgsqlconnection", new PostgresAdapter()},
+                                                                                            {"sqliteconnection", new SQLiteAdapter()},
                                                                                             {"mysqlconnection",new MySQLAdapter()}
-																						};
+                                                                                        };
         private static IEnumerable<PropertyInfo> ComputedPropertiesCache(Type type)
         {
             IEnumerable<PropertyInfo> pi;

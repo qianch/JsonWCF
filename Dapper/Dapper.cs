@@ -3364,8 +3364,8 @@ Type type, IDataReader reader, int startBound = 0, int length = -1, bool returnN
 
             private IEnumerable<TReturn> MultiReadInternal<TFirst, TSecond, TThird, TFourth, TFifth, TSixth, TSeventh, TReturn>(Delegate func, string splitOn)
             {
-                var identity = this.identity.ForGrid(typeof(TReturn), new Type[] { 
-                    typeof(TFirst), 
+                var identity = this.identity.ForGrid(typeof(TReturn), new Type[] {
+                    typeof(TFirst),
                     typeof(TSecond),
                     typeof(TThird),
                     typeof(TFourth),
@@ -3925,9 +3925,9 @@ string name, object value = null, DbType? dbType = null, ParameterDirection? dir
         /// Dictionary of supported features index by connection type name
         /// </summary>
         private static readonly Dictionary<string, FeatureSupport> FeatureList = new Dictionary<string, FeatureSupport>(StringComparer.InvariantCultureIgnoreCase) {
-				{"sqlserverconnection", new FeatureSupport { Arrays = false}},
-				{"npgsqlconnection", new FeatureSupport {Arrays = true}}
-		};
+                {"sqlserverconnection", new FeatureSupport { Arrays = false}},
+                {"npgsqlconnection", new FeatureSupport {Arrays = true}}
+        };
 
         /// <summary>
         /// Gets the featureset based on the passed connection
