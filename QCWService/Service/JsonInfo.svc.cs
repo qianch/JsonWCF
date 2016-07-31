@@ -14,9 +14,9 @@ namespace QCWService.Service
 {
     [ServiceContract(Namespace = "")]
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
-    public class BidInfo
+    public class JsonInfo
     {
-        private readonly ILog logger = LogManager.GetLogger(typeof(BidInfo));
+        private readonly ILog logger = LogManager.GetLogger(typeof(JsonInfo));
         private readonly Assembly ass = Assembly.LoadFrom(HttpContext.Current.Server.MapPath("~/bin/QCWService.dll"));
         // 要使用 HTTP GET，请添加 [WebGet] 特性。(默认 ResponseFormat 为 WebMessageFormat.Json)
         // 要创建返回 XML 的操作，
