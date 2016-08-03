@@ -36,18 +36,43 @@ namespace NewtonsoftJsonBehavior.Json
 
         public void DeserializeRequest(Message message, object[] parameters)
         {
-            object bodyFormatProperty;
-            if (!message.Properties.TryGetValue(WebBodyFormatMessageProperty.Name, out bodyFormatProperty) ||
-                (bodyFormatProperty as WebBodyFormatMessageProperty).Format != WebContentFormat.Raw)
+            byte[] rawBody = null;
+            HttpRequestMessageProperty request = null;
+            foreach (var value in message.Properties.Values)
             {
-                throw new InvalidOperationException("Incoming messages must have a body format of Raw. Is a ContentTypeMapper set on the WebHttpBinding?");
+                if (value is HttpRequestMessageProperty)
+                {
+                    request = value as HttpRequestMessageProperty;
+                }
+            }
+            //GET Method
+            if (request.Method.Equals("GET", StringComparison.OrdinalIgnoreCase))
+            {
+                var req = request.QueryString;
+                var reqDecode = HttpUtility.UrlDecode(req);
+                if (string.IsNullOrEmpty(reqDecode))
+                {
+                    throw new InvalidOperationException("Incoming message must have json parameter");
+                }
+                rawBody = System.Text.Encoding.UTF8.GetBytes(reqDecode);
             }
 
-            var bodyReader = message.GetReaderAtBodyContents();
-            bodyReader.ReadStartElement("Binary");
-            byte[] rawBody = bodyReader.ReadContentAsBase64();
-            var ms = new MemoryStream(rawBody);
+            //POST Method
+            if (request.Method.Equals("POST", StringComparison.OrdinalIgnoreCase))
+            {
+                object bodyFormatProperty;
+                if (!message.Properties.TryGetValue(WebBodyFormatMessageProperty.Name, out bodyFormatProperty) ||
+                    (bodyFormatProperty as WebBodyFormatMessageProperty).Format != WebContentFormat.Raw)
+                {
+                    throw new InvalidOperationException("Incoming messages must have a body format of Raw. Is a ContentTypeMapper set on the WebHttpBinding?");
+                }
 
+                var bodyReader = message.GetReaderAtBodyContents();
+                bodyReader.ReadStartElement("Binary");
+                rawBody = bodyReader.ReadContentAsBase64();
+            }
+
+            var ms = new MemoryStream(rawBody);
             var sr = new StreamReader(ms);
             var serializer = new Newtonsoft.Json.JsonSerializer();
             if (parameters.Length == 1)

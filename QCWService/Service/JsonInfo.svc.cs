@@ -18,15 +18,21 @@ namespace QCWService.Service
     {
         private readonly ILog logger = LogManager.GetLogger(typeof(JsonInfo));
         private readonly Assembly ass = Assembly.LoadFrom(HttpContext.Current.Server.MapPath("~/bin/QCWService.dll"));
-        // 要使用 HTTP GET，请添加 [WebGet] 特性。(默认 ResponseFormat 为 WebMessageFormat.Json)
-        // 要创建返回 XML 的操作，
-        // 请添加 [WebGet(ResponseFormat=WebMessageFormat.Xml)]，
-        // 并在操作正文中包括以下行:
-        // WebOperationContext.Current.OutgoingResponse.ContentType = "text/xml";
+
         [OperationContract]
+        [WebInvoke(Method = "*")]
         public Dictionary<string, object> DoWork()
         {
             return ServiceUtil.ToReturnData(new ReturnData());
+        }
+
+        [OperationContract]
+        [WebInvoke(Method = "*")]
+        public Dictionary<string, object> Do(Dictionary<string, object> receiveJson)
+        {
+            ReturnData rtn = new ReturnData();
+            rtn.AddUserData("receiveJson", receiveJson);
+            return ServiceUtil.ToReturnData(rtn);
         }
 
         [OperationContract]
