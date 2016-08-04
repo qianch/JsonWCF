@@ -43,6 +43,7 @@ namespace NewtonsoftJsonBehavior.Json
                 if (value is HttpRequestMessageProperty)
                 {
                     request = value as HttpRequestMessageProperty;
+                    break;
                 }
             }
             //GET Method
