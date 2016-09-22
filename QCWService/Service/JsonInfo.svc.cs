@@ -9,7 +9,6 @@ using System.ServiceModel.Activation;
 using System.ServiceModel.Web;
 using System.Web;
 
-[assembly: log4net.Config.XmlConfigurator(Watch = true)]
 namespace QCWService.Service
 {
     [ServiceContract(Namespace = "")]
