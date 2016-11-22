@@ -54,7 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\BaseWService.cs" />
-    <Compile Include="Common\Common.cs" />
+    <Compile Include="Common\Function.cs" />
     <Compile Include="Common\ServiceUtil.cs" />
     <Compile Include="DB\DB_Base.cs" />
     <Compile Include="Entity\ReceiveData.cs" />

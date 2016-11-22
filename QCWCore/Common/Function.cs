@@ -5,7 +5,7 @@ using System.Text;
 
 namespace QCWCore.Common
 {
-    public class Common
+    public class Function
     {
         public static string ValidateData = System.Configuration.ConfigurationManager.AppSettings["ValidateData"];
         public static string CheckParam(Dictionary<string, string> dicParam, string validateData)

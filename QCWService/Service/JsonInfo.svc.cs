@@ -16,7 +16,7 @@ namespace QCWService.Service
     public class JsonInfo
     {
         private readonly ILog logger = LogManager.GetLogger(typeof(JsonInfo));
-        private readonly Assembly ass = Assembly.LoadFrom(HttpContext.Current.Server.MapPath("~/bin/QCWService.dll"));
+        private readonly Assembly ass = Assembly.LoadFrom(AppDomain.CurrentDomain.BaseDirectory + "/bin/QCWService.dll");
 
         [OperationContract]
         [WebInvoke(Method = "*")]

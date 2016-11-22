@@ -35,7 +35,7 @@ namespace QCWService.Service
             var dicParam = new Dictionary<string, string>();
             dicParam.Add("LoginID", loginID);
             dicParam.Add("PassWord", passWord);
-            string msg = Common.CheckParam(dicParam, validateData);
+            string msg = Function.CheckParam(dicParam, validateData);
             if (msg != "")
             {
                 return new ReturnData(ReturnStatus.False, msg);
