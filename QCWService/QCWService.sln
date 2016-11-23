@@ -7,11 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QCWService", "QCWService.cs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dapper", "..\Dapper\Dapper.csproj", "{FAA4E75A-C905-4C29-BEF7-A8E845A4085C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonBehavior", "..\NewtonsoftJsonBehavior\JsonBehavior.csproj", "{ED515B6A-56DA-49AC-AA93-086A496FA740}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QCWCore", "..\QCWCore\QCWCore.csproj", "{6CE5BA0C-29E9-452A-A128-1B134F52D4B5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QCWTest", "QCWTest\QCWTest.csproj", "{13695E88-06E6-4123-BC3E-796A2197E743}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonBehavior", "..\JsonBehavior\JsonBehavior.csproj", "{ED515B6A-56DA-49AC-AA93-086A496FA740}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,10 +27,6 @@ Global
 		{FAA4E75A-C905-4C29-BEF7-A8E845A4085C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FAA4E75A-C905-4C29-BEF7-A8E845A4085C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FAA4E75A-C905-4C29-BEF7-A8E845A4085C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ED515B6A-56DA-49AC-AA93-086A496FA740}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ED515B6A-56DA-49AC-AA93-086A496FA740}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ED515B6A-56DA-49AC-AA93-086A496FA740}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ED515B6A-56DA-49AC-AA93-086A496FA740}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6CE5BA0C-29E9-452A-A128-1B134F52D4B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6CE5BA0C-29E9-452A-A128-1B134F52D4B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6CE5BA0C-29E9-452A-A128-1B134F52D4B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +35,10 @@ Global
 		{13695E88-06E6-4123-BC3E-796A2197E743}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13695E88-06E6-4123-BC3E-796A2197E743}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13695E88-06E6-4123-BC3E-796A2197E743}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED515B6A-56DA-49AC-AA93-086A496FA740}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED515B6A-56DA-49AC-AA93-086A496FA740}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED515B6A-56DA-49AC-AA93-086A496FA740}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED515B6A-56DA-49AC-AA93-086A496FA740}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

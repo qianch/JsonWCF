@@ -99,10 +99,6 @@
       <Project>{faa4e75a-c905-4c29-bef7-a8e845a4085c}</Project>
       <Name>Dapper</Name>
     </ProjectReference>
-    <ProjectReference Include="..\NewtonsoftJsonBehavior\NewtonsoftJsonBehavior.csproj">
-      <Project>{ed515b6a-56da-49ac-aa93-086a496fa740}</Project>
-      <Name>JsonBehavior</Name>
-    </ProjectReference>
     <ProjectReference Include="..\QCWCore\QCWCore.csproj">
       <Project>{6ce5ba0c-29e9-452a-a128-1b134f52d4b5}</Project>
       <Name>QCWCore</Name>
