@@ -7,9 +7,9 @@ using System.ServiceModel.Dispatcher;
 using System.ServiceModel.Web;
 using System.Web;
 
-namespace NewtonsoftJsonBehavior.Json
+namespace JsonBehavior.Json
 {
-    public class NewtonsoftJsonBehavior : WebHttpBehavior
+    public class JsonBehavior : WebHttpBehavior
     {
         public override void Validate(ServiceEndpoint endpoint)
         {
@@ -42,7 +42,7 @@ namespace NewtonsoftJsonBehavior.Json
                 return base.GetRequestDispatchFormatter(operationDescription, endpoint);
             }
 
-            return new NewtonsoftJsonDispatchFormatter(operationDescription, true);
+            return new JsonDispatchFormatter(operationDescription, true);
         }
 
         protected override IDispatchMessageFormatter GetReplyDispatchFormatter(OperationDescription operationDescription, ServiceEndpoint endpoint)
@@ -53,7 +53,7 @@ namespace NewtonsoftJsonBehavior.Json
             }
             else
             {
-                return new NewtonsoftJsonDispatchFormatter(operationDescription, false);
+                return new JsonDispatchFormatter(operationDescription, false);
             }
         }
 

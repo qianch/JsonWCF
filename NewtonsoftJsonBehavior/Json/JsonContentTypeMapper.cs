@@ -4,9 +4,9 @@ using System.Linq;
 using System.ServiceModel.Channels;
 using System.Web;
 
-namespace NewtonsoftJsonBehavior.Json
+namespace JsonBehavior.Json
 {
-    public class NewtonsoftJsonContentTypeMapper : WebContentTypeMapper
+    public class JsonContentTypeMapper : WebContentTypeMapper
     {
         public override WebContentFormat GetMessageFormatForContentType(string contentType)
         {

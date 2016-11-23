@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JsonBehavior.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,14 +11,14 @@ using System.Text;
 using System.Web;
 using System.Xml;
 
-namespace NewtonsoftJsonBehavior.Json
+namespace JsonBehavior.Json
 {
-    public class NewtonsoftJsonDispatchFormatter : IDispatchMessageFormatter
+    public class JsonDispatchFormatter : IDispatchMessageFormatter
     {
         OperationDescription operation;
         Dictionary<string, int> parameterNames;
 
-        public NewtonsoftJsonDispatchFormatter(OperationDescription operation, bool isRequest)
+        public JsonDispatchFormatter(OperationDescription operation, bool isRequest)
         {
             this.operation = operation;
             if (isRequest)
@@ -79,7 +80,14 @@ namespace NewtonsoftJsonBehavior.Json
             if (parameters.Length == 1)
             {
                 // single parameter, assuming bare
-                parameters[0] = serializer.Deserialize(sr, operation.Messages[0].Body.Parts[0].Type);
+                if (operation.Messages[0].Body.Parts[0].Type == typeof(string))
+                {
+                    parameters[0] = Encoding.UTF8.GetString(rawBody);
+                }
+                else
+                {
+                    parameters[0] = serializer.Deserialize(sr, operation.Messages[0].Body.Parts[0].Type);
+                }
             }
             else
             {
@@ -118,19 +126,25 @@ namespace NewtonsoftJsonBehavior.Json
 
         public Message SerializeReply(MessageVersion messageVersion, object[] parameters, object result)
         {
-            byte[] body;
-            var serializer = new Newtonsoft.Json.JsonSerializer();
-
-            using (var ms = new MemoryStream())
+            byte[] body = null;
+            if (operation.Messages[1].Body.ReturnValue.Type == typeof(string))
             {
-                using (var sw = new StreamWriter(ms, Encoding.UTF8))
+                body = Encoding.UTF8.GetBytes((string)result);
+            }
+            else
+            {
+                var serializer = new Newtonsoft.Json.JsonSerializer();
+                using (var ms = new MemoryStream())
                 {
-                    using (Newtonsoft.Json.JsonWriter writer = new Newtonsoft.Json.JsonTextWriter(sw))
+                    using (var sw = new StreamWriter(ms, Encoding.UTF8))
                     {
-                        //writer.Formatting = Newtonsoft.Json.Formatting.Indented;
-                        serializer.Serialize(writer, result);
-                        sw.Flush();
-                        body = ms.ToArray();
+                        using (Newtonsoft.Json.JsonWriter writer = new Newtonsoft.Json.JsonTextWriter(sw))
+                        {
+                            //writer.Formatting = Newtonsoft.Json.Formatting.Indented;
+                            serializer.Serialize(writer, result);
+                            sw.Flush();
+                            body = ms.ToArray();
+                        }
                     }
                 }
             }

@@ -5,7 +5,7 @@ using System.ServiceModel.Channels;
 using System.Web;
 using System.Xml;
 
-namespace NewtonsoftJsonBehavior.Json
+namespace JsonBehavior.Json
 {
     public class RawBodyWriter : BodyWriter
     {

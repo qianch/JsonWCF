@@ -7,13 +7,13 @@ using System.ServiceModel.Dispatcher;
 using System.Text;
 using System.Xml;
 
-namespace NewtonsoftJsonBehavior.Json
+namespace JsonBehavior.Json
 {
-    class NewtonsoftJsonClientFormatter : IClientMessageFormatter
+    class JsonClientFormatter : IClientMessageFormatter
     {
         OperationDescription operation;
         Uri operationUri;
-        public NewtonsoftJsonClientFormatter(OperationDescription operation, ServiceEndpoint endpoint)
+        public JsonClientFormatter(OperationDescription operation, ServiceEndpoint endpoint)
         {
             this.operation = operation;
             string endpointAddress = endpoint.Address.Uri.ToString();

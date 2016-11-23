@@ -7,8 +7,8 @@
     <ProjectGuid>{ED515B6A-56DA-49AC-AA93-086A496FA740}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NewtonsoftJsonBehavior</RootNamespace>
-    <AssemblyName>NewtonsoftJsonBehavior</AssemblyName>
+    <RootNamespace>JsonBehavior</RootNamespace>
+    <AssemblyName>JsonBehavior</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -51,11 +51,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Json\NewtonsoftJsonBehavior.cs" />
-    <Compile Include="Json\NewtonsoftJsonBehaviorExtension.cs" />
-    <Compile Include="Json\NewtonsoftJsonClientFormatter.cs" />
-    <Compile Include="Json\NewtonsoftJsonContentTypeMapper.cs" />
-    <Compile Include="Json\NewtonsoftJsonDispatchFormatter.cs" />
+    <Compile Include="Json\JsonBehavior.cs" />
+    <Compile Include="Json\JsonBehaviorExtension.cs" />
+    <Compile Include="Json\JsonClientFormatter.cs" />
+    <Compile Include="Json\JsonContentTypeMapper.cs" />
+    <Compile Include="Json\JsonDispatchFormatter.cs" />
     <Compile Include="Json\RawBodyWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

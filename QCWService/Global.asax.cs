@@ -22,6 +22,7 @@ namespace QCWService
 
         protected void Application_BeginRequest(object sender, EventArgs e)
         {
+            //跨域配置
             HttpContext.Current.Response.AddHeader("Access-Control-Allow-Origin", "*");
             if (HttpContext.Current.Request.HttpMethod == "OPTIONS")
             {

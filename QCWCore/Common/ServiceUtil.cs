@@ -23,7 +23,7 @@ namespace QCWCore.Common
             return ret;
         }
 
-        public static Dictionary<string, object> ToReturnData(ReturnData returnData)
+        public static string ToReturnData(ReturnData returnData)
         {
             var retDic = new Dictionary<string, object>();
             // 程序是否出错信息
@@ -61,16 +61,16 @@ namespace QCWCore.Common
                 dic3.Add(key, returnData.UserData[key]);
             }
             retDic.Add("UserArea", dic3);//加入第三串UserArea
-            return retDic;
+            return JsonConvert.SerializeObject(retDic);
         }
 
-        public static Dictionary<string, object> DoService(Dictionary<string, object> receiveJson, Type type)
+        public static string DoService(Dictionary<string, object> receiveJson, Type type)
         {
             StackTrace st = new StackTrace(true);
             return DoService(receiveJson, type, st.GetFrame(1).GetMethod().Name);
         }
 
-        public static Dictionary<string, object> DoService(Dictionary<string, object> receiveJson, Type type, string methodName)
+        public static string DoService(Dictionary<string, object> receiveJson, Type type, string methodName)
         {
             try
             {
