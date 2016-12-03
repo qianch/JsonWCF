@@ -27,7 +27,7 @@
                 async: false,
                 data: JSON.stringify(receive),
                 contentType: "application/json;utf-8",
-                url: "http://localhost/QCWService/Service/JsonInfo.svc/UserLogin",
+                url: "http://localhost/QCWService/UserLogin",
                 success: function (result) {
                     var rtn = JSON.stringify(result);
                     alert("UserLogin：" + rtn);

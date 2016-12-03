@@ -1,7 +1,10 @@
-﻿using System;
+﻿using QCWService.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel.Activation;
 using System.Web;
+using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
 
@@ -13,6 +16,8 @@ namespace QCWService
         protected void Application_Start(object sender, EventArgs e)
         {
             log4net.Config.XmlConfigurator.Configure();
+            //自定义路由
+            RouteTable.Routes.Add(new ServiceRoute("", new WebServiceHostFactory(), typeof(JsonInfo)));
         }
 
         protected void Session_Start(object sender, EventArgs e)
