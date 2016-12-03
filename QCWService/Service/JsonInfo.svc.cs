@@ -17,7 +17,7 @@ namespace QCWService.Service
     public class JsonInfo
     {
         private readonly ILog logger = LogManager.GetLogger(typeof(JsonInfo));
-        private readonly Assembly ass = Assembly.LoadFrom(AppDomain.CurrentDomain.BaseDirectory + "/bin/QCWService.dll");
+        private readonly Assembly ass = Assembly.LoadFrom(AppDomain.CurrentDomain.BaseDirectory + Path.Combine("bin", "QCWService.dll"));
 
         [OperationContract]
         [WebInvoke(Method = "*", UriTemplate = "DoWork")]
@@ -53,10 +53,11 @@ namespace QCWService.Service
         }
 
         [OperationContract]
+        [WebInvoke(Method = "*")]
         public string User_GetDateTime()
         {
             ReturnData ret = new ReturnData();
-            ret.AddUserData("DateTime", string.Format("{0:yyyy-MM-dd HH:mm:ss}", DateTime.Now));
+            ret.AddUserData("DateTime", DateTime.Now);
             return ServiceUtil.ToReturnData(ret);
         }
     }

@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using System.Reflection;
 using System.Diagnostics;
 using QCWCore.Entity;
+using Newtonsoft.Json.Converters;
 
 namespace QCWCore.Common
 {
@@ -61,7 +62,8 @@ namespace QCWCore.Common
                 dic3.Add(key, returnData.UserData[key]);
             }
             retDic.Add("UserArea", dic3);//加入第三串UserArea
-            return JsonConvert.SerializeObject(retDic);
+            IsoDateTimeConverter timeConverter = new IsoDateTimeConverter() { DateTimeFormat = "{yyyy-MM-dd HH:mm:ss}" };
+            return JsonConvert.SerializeObject(retDic,timeConverter);
         }
 
         public static string DoService(Dictionary<string, object> receiveJson, Type type)
