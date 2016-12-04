@@ -56,12 +56,7 @@ namespace QCWCore.Common
             retDic.Add("BusinessInfo", dic2);//加入第二串BusinessInfo
 
             // 用户数据
-            var dic3 = new Dictionary<string, object>();
-            foreach (string key in returnData.UserData.Keys)
-            {
-                dic3.Add(key, returnData.UserData[key]);
-            }
-            retDic.Add("UserArea", dic3);//加入第三串UserArea
+            retDic.Add("UserArea", returnData.UserData);//加入第三串UserArea
             IsoDateTimeConverter timeConverter = new IsoDateTimeConverter() { DateTimeFormat = "{yyyy-MM-dd HH:mm:ss}" };
             return JsonConvert.SerializeObject(retDic,timeConverter);
         }
