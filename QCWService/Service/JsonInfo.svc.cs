@@ -17,7 +17,6 @@ namespace QCWService.Service
     public class JsonInfo
     {
         private readonly ILog logger = LogManager.GetLogger(typeof(JsonInfo));
-        private readonly Assembly ass = Assembly.LoadFrom(AppDomain.CurrentDomain.BaseDirectory + Path.Combine(new string[] { "bin", "QCWService.dll" }));
 
         [OperationContract]
         [WebInvoke(Method = "*", UriTemplate = "DoWork")]
@@ -47,8 +46,7 @@ namespace QCWService.Service
         [OperationContract]
         public string UserLogin(string receiveJson)
         {
-            Type type = ass.GetType("QCWService.Service.LoginService");
-            return ServiceUtil.DoService(receiveJson, type);
+            return new LoginService().UserLogin(new ReceiveData(receiveJson)).ToString();
         }
 
         [OperationContract]
