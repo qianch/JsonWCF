@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,14 @@ namespace QCWCore.Entity
         public ReceiveData()
         {
             _params = new Dictionary<string, object>();
+        }
+
+        public ReceiveData(string receiveJson)
+        {
+            Dictionary<string, object> receiveDic = JsonConvert.DeserializeObject<Dictionary<string, object>>(receiveJson);
+            Dictionary<string, object> p = JsonConvert.DeserializeObject<Dictionary<string, object>>(receiveDic["paras"].ToString());
+            SetParams(p);
+            _validatedata = receiveDic["ValidateData"].ToString();
         }
 
         public string ValidateData

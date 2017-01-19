@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -68,6 +70,43 @@ namespace QCWCore.Entity
         {
             set { _data = value; }
             get { return _data; }
+        }
+
+        public override string ToString()
+        {
+            var retDic = new Dictionary<string, object>();
+            // 程序是否出错信息
+            var dic1 = new Dictionary<string, string>();
+            if (_returnstatus == ReturnStatus.Error)
+            {
+                dic1.Add("Code", "0");
+                dic1.Add("Description", _description);
+            }
+            else
+            {
+                dic1.Add("Code", "1");
+                dic1.Add("Description", "");
+            }
+            retDic.Add("ReturnInfo", dic1);//加入第一串ReturnInfo
+
+            // 业务是否出错信息
+            var dic2 = new Dictionary<string, string>();
+            if (_returnstatus == ReturnStatus.False)
+            {
+                dic2.Add("Code", "0");
+                dic2.Add("Description", _description);
+            }
+            else
+            {
+                dic2.Add("Code", "1");
+                dic2.Add("Description", "");
+            }
+            retDic.Add("BusinessInfo", dic2);//加入第二串BusinessInfo
+
+            // 用户数据
+            retDic.Add("UserArea", _userdata);//加入第三串UserArea
+            IsoDateTimeConverter timeConverter = new IsoDateTimeConverter() { DateTimeFormat = "yyyy-MM-dd HH:mm:ss" };
+            return JsonConvert.SerializeObject(retDic, timeConverter);
         }
     }
 }

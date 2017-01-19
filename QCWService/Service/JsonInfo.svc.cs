@@ -17,14 +17,13 @@ namespace QCWService.Service
     public class JsonInfo
     {
         private readonly ILog logger = LogManager.GetLogger(typeof(JsonInfo));
-        private readonly Assembly ass = Assembly.LoadFrom(AppDomain.CurrentDomain.BaseDirectory + Path.Combine(new string[] {"bin", "QCWService.dll" }));
+        private readonly Assembly ass = Assembly.LoadFrom(AppDomain.CurrentDomain.BaseDirectory + Path.Combine(new string[] { "bin", "QCWService.dll" }));
 
         [OperationContract]
         [WebInvoke(Method = "*", UriTemplate = "DoWork")]
         public string DoWork()
         {
-            ReturnData rtn = new ReturnData();
-            return ServiceUtil.ToReturnData(rtn);
+            return new ReturnData().ToString();
         }
 
         [OperationContract]
@@ -33,7 +32,7 @@ namespace QCWService.Service
         {
             ReturnData rtn = new ReturnData();
             rtn.AddUserData("receiveJson", receiveJson);
-            return ServiceUtil.ToReturnData(rtn);
+            return rtn.ToString();
         }
 
         [OperationContract]
@@ -46,7 +45,7 @@ namespace QCWService.Service
         }
 
         [OperationContract]
-        public string UserLogin(Dictionary<string, object> receiveJson)
+        public string UserLogin(string receiveJson)
         {
             Type type = ass.GetType("QCWService.Service.LoginService");
             return ServiceUtil.DoService(receiveJson, type);
@@ -58,7 +57,7 @@ namespace QCWService.Service
         {
             ReturnData ret = new ReturnData();
             ret.AddUserData("DateTime", DateTime.Now);
-            return ServiceUtil.ToReturnData(ret);
+            return ret.ToString();
         }
     }
 }

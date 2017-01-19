@@ -15,64 +15,18 @@ namespace QCWCore.Common
     {
         private static readonly ILog logger = LogManager.GetLogger(typeof(ServiceUtil));
 
-        public static ReceiveData FormReceiveData(Dictionary<string, object> receiveJson)
-        {
-            ReceiveData ret = new ReceiveData();
-            Dictionary<string, object> p = JsonConvert.DeserializeObject<Dictionary<string, object>>(receiveJson["paras"].ToString());
-            ret.SetParams(p);
-            ret.ValidateData = receiveJson["ValidateData"].ToString();
-            return ret;
-        }
-
-        public static string ToReturnData(ReturnData returnData)
-        {
-            var retDic = new Dictionary<string, object>();
-            // 程序是否出错信息
-            var dic1 = new Dictionary<string, string>();
-            if (returnData.Status == ReturnStatus.Error)
-            {
-                dic1.Add("Code", "0");
-                dic1.Add("Description", returnData.Description);
-            }
-            else
-            {
-                dic1.Add("Code", "1");
-                dic1.Add("Description", "");
-            }
-            retDic.Add("ReturnInfo", dic1);//加入第一串ReturnInfo
-
-            // 业务是否出错信息
-            var dic2 = new Dictionary<string, string>();
-            if (returnData.Status == ReturnStatus.False)
-            {
-                dic2.Add("Code", "0");
-                dic2.Add("Description", returnData.Description);
-            }
-            else
-            {
-                dic2.Add("Code", "1");
-                dic2.Add("Description", "");
-            }
-            retDic.Add("BusinessInfo", dic2);//加入第二串BusinessInfo
-
-            // 用户数据
-            retDic.Add("UserArea", returnData.UserData);//加入第三串UserArea
-            IsoDateTimeConverter timeConverter = new IsoDateTimeConverter() { DateTimeFormat = "{yyyy-MM-dd HH:mm:ss}" };
-            return JsonConvert.SerializeObject(retDic,timeConverter);
-        }
-
-        public static string DoService(Dictionary<string, object> receiveJson, Type type)
+        public static string DoService(string receiveJson, Type type)
         {
             StackTrace st = new StackTrace(true);
             return DoService(receiveJson, type, st.GetFrame(1).GetMethod().Name);
         }
 
-        public static string DoService(Dictionary<string, object> receiveJson, Type type, string methodName)
+        public static string DoService(string receiveJson, Type type, string methodName)
         {
             try
             {
                 logger.Debug(methodName + "收到参数" + JsonConvert.SerializeObject(receiveJson));
-                ReceiveData receiveData = FormReceiveData(receiveJson);
+                ReceiveData receiveData = new ReceiveData(receiveJson);
                 MethodInfo method = type.GetMethod(methodName);
                 if (method == null)
                 {
@@ -80,12 +34,12 @@ namespace QCWCore.Common
                 }
                 object obj = Activator.CreateInstance(type);
                 ReturnData retrunData = (ReturnData)method.Invoke(obj, new object[] { receiveData });
-                return ToReturnData(retrunData);
+                return retrunData.ToString();
             }
             catch (Exception ex)
             {
                 logger.Error(ex);
-                return ToReturnData(new ReturnData(ReturnStatus.Error, "服务出错!" + ex.Message));
+                return new ReturnData(ReturnStatus.Error, "服务出错!" + ex.ToString()).ToString();
             }
         }
     }
