@@ -46,7 +46,7 @@ namespace QCWService.Service
         [OperationContract]
         public string UserLogin(string receiveJson)
         {
-            return new LoginService().UserLogin(new ReceiveData(receiveJson)).ToString();
+            return new LoginService(new ReceiveData(receiveJson)).UserLogin().ToString();
         }
 
         [OperationContract]

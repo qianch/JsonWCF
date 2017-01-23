@@ -11,6 +11,8 @@ namespace QCWService.Service
 {
     public class MobileService : BaseWService
     {
+        protected ReceiveData receiveData;
+        protected ReturnData returnData;
         protected string validateData = "";
         protected string currentPageIndex = "";
         protected string pageSize = "20";
@@ -19,6 +21,26 @@ namespace QCWService.Service
         protected string startDate = "";
         protected string endDate = "";
         protected string areaCode = "";
+
+        public MobileService(ReceiveData receiveData)
+        {
+            this.receiveData = receiveData;
+            returnData = new ReturnData();
+            if (receiveData.IsStandard == false)
+            {
+                returnData.Status = ReturnStatus.Error;
+                Dictionary<string, object> ret = new Dictionary<string, object>
+                {
+                    {"ValidateData","Data" },
+                    {"paras",new Dictionary<string,string> { {"A","aa" }, { "B","bb"} } }
+                };
+                returnData.Description = "传入的json不合法,参考格式：" + Newtonsoft.Json.JsonConvert.SerializeObject(ret);
+            }
+            else
+            {
+                returnData.Status = ReturnStatus.True;
+            }
+        }
 
         public override ReturnData DoService(ReceiveData receiveData)
         {

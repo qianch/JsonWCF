@@ -12,42 +12,47 @@ namespace QCWService.Service
     {
         private readonly ILog logger = LogManager.GetLogger(typeof(LoginService));
 
+        public LoginService(ReceiveData receiveData) : base(receiveData)
+        {
+        }
+
         /// <summary>
         /// 登录
         /// </summary>
-        /// <param name="receiveData"></param>
         /// <returns></returns>
-        public ReturnData UserLogin(ReceiveData receiveData)
+        public ReturnData UserLogin()
         {
-            string loginID = "";
-            string passWord = "";
-            try
+            if (returnData.Status == ReturnStatus.True)
             {
-                validateData = receiveData.ValidateData;
-                loginID = receiveData.GetParam("LoginID");
-                passWord = receiveData.GetParam("Password");
-            }
-            catch (Exception ex)
-            {
-                logger.Error("输入参数不合法", ex);
-                return new ReturnData(ReturnStatus.Error, "输入参数不合法" + ex.ToString());
-            }
-            var dicParam = new Dictionary<string, string>();
-            dicParam.Add("LoginID", loginID);
-            dicParam.Add("PassWord", passWord);
-            string msg = Function.CheckParam(dicParam, validateData);
-            if (msg != "")
-            {
-                return new ReturnData(ReturnStatus.False, msg);
-            }
+                string loginID = "";
+                string passWord = "";
+                try
+                {
+                    validateData = receiveData.ValidateData;
+                    loginID = receiveData.GetParam("LoginID");
+                    passWord = receiveData.GetParam("Password");
+                }
+                catch (Exception ex)
+                {
+                    logger.Error("输入参数不合法", ex);
+                    return new ReturnData(ReturnStatus.Error, "输入参数不合法" + ex.ToString());
+                }
+                var dicParam = new Dictionary<string, string>();
+                dicParam.Add("LoginID", loginID);
+                dicParam.Add("PassWord", passWord);
+                string msg = Function.CheckParam(dicParam, validateData);
+                if (msg != "")
+                {
+                    return new ReturnData(ReturnStatus.False, msg);
+                }
 
-            ReturnData ret = new ReturnData();
-            ret.Description = "登录成功";
-            ret.AddUserData("UserGuid", dearJsonValue("userguid"));
-            ret.AddUserData("UserName", dearJsonValue("username"));
-            ret.AddUserData("DanWeiGuid", dearJsonValue("danweiguid"));
-            ret.AddUserData("DanWeiName", dearJsonValue("danweiname"));
-            return ret;
+                returnData.Description = "登录成功";
+                returnData.AddUserData("UserGuid", dearJsonValue("userguid"));
+                returnData.AddUserData("UserName", dearJsonValue("username"));
+                returnData.AddUserData("DanWeiGuid", dearJsonValue("danweiguid"));
+                returnData.AddUserData("DanWeiName", dearJsonValue("danweiname"));
+            }
+            return returnData;
         }
 
         public ReturnData User_Add(ReceiveData receiveData)

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using log4net;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +9,10 @@ namespace QCWCore.Entity
 {
     public class ReceiveData
     {
+        private readonly ILog _logger = LogManager.GetLogger(typeof(ReceiveData));
         private string _validatedata;
         private string _paras;
+        private bool _isStandard;
         private Dictionary<string, object> _params;
 
         public ReceiveData()
@@ -19,11 +22,22 @@ namespace QCWCore.Entity
 
         public ReceiveData(string receiveJson)
         {
-            Dictionary<string, object> receiveDic = JsonConvert.DeserializeObject<Dictionary<string, object>>(receiveJson);
-            Dictionary<string, object> p = JsonConvert.DeserializeObject<Dictionary<string, object>>(receiveDic["paras"].ToString());
-            SetParams(p);
-            _validatedata = receiveDic["ValidateData"].ToString();
+            try
+            {
+                Dictionary<string, object> receiveDic = JsonConvert.DeserializeObject<Dictionary<string, object>>(receiveJson);
+                Dictionary<string, object> p = JsonConvert.DeserializeObject<Dictionary<string, object>>(receiveDic["paras"].ToString());
+                SetParams(p);
+                _validatedata = receiveDic["ValidateData"].ToString();
+                _isStandard = true;
+            }
+            catch (Exception e)
+            {
+                _logger.Error(e.ToString());
+                _isStandard = false;
+            }
         }
+
+        public bool IsStandard { get { return _isStandard; } }
 
         public string ValidateData
         {
