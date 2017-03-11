@@ -12,7 +12,6 @@ namespace QCWCore.Entity
         private ReturnStatus _returnstatus;
         private string _description;
         private Dictionary<string, object> _userdata;
-        private string _data;
 
         public ReturnData()
         {
@@ -49,27 +48,7 @@ namespace QCWCore.Entity
         public Dictionary<string, object> UserData
         {
             get { return _userdata; }
-        }
-
-        public void AddUserData(string key, object value)
-        {
-            _userdata.Add(key, value);
-        }
-
-        public void AddUserData(string key, string value)
-        {
-            _userdata.Add(key, value);
-        }
-
-        public void AddUserData(string key, int value)
-        {
-            _userdata.Add(key, Convert.ToString(value));
-        }
-
-        public string Data
-        {
-            set { _data = value; }
-            get { return _data; }
+            set { _userdata = value; }
         }
 
         public override string ToString()

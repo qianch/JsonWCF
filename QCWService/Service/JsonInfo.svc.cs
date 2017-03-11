@@ -1,5 +1,5 @@
 ﻿using log4net;
-using QCWCore.Common;
+using QCWCore.CustomException;
 using QCWCore.Entity;
 using System;
 using System.Collections.Generic;
@@ -14,6 +14,7 @@ namespace QCWService.Service
 {
     [ServiceContract(Namespace = "")]
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
+    [CustomExceptionAttribute(typeof(CustomExceptionHandler))]
     public class JsonInfo
     {
         private readonly ILog logger = LogManager.GetLogger(typeof(JsonInfo));
@@ -29,21 +30,18 @@ namespace QCWService.Service
         [WebInvoke(Method = "*")]
         public string DoString(string receiveJson)
         {
-            ReturnData rtn = new ReturnData();
-            rtn.AddUserData("receiveJson", receiveJson);
-            return rtn.ToString();
+            return new ReturnData().ToString();
         }
 
         [OperationContract]
         [WebInvoke(Method = "*")]
         public Dictionary<string, object> DoDic(Dictionary<string, object> receiveJson)
         {
-            ReturnData rtn = new ReturnData();
-            rtn.AddUserData("receiveJson", receiveJson);
             return new Dictionary<string, object> { { "receiveJson", receiveJson } };
         }
 
         [OperationContract]
+        [WebInvoke(Method = "*")]
         public string UserLogin(string receiveJson)
         {
             return new LoginService(new ReceiveData(receiveJson)).UserLogin().ToString();
@@ -53,9 +51,11 @@ namespace QCWService.Service
         [WebInvoke(Method = "*")]
         public string User_GetDateTime()
         {
-            ReturnData ret = new ReturnData();
-            ret.AddUserData("DateTime", DateTime.Now);
-            return ret.ToString();
+            return new ReturnData(new Dictionary<string, object>
+            {
+                { "DateTime", DateTime.Now }
+            })
+            .ToString();
         }
     }
 }

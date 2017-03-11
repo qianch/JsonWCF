@@ -10,9 +10,7 @@ namespace QCWCore.Entity
     public class ReceiveData
     {
         private readonly ILog _logger = LogManager.GetLogger(typeof(ReceiveData));
-        private string _validatedata;
-        private string _paras;
-        private bool _isStandard;
+        private string _validateData = System.Configuration.ConfigurationManager.AppSettings["ValidateData"];
         private Dictionary<string, object> _params;
 
         public ReceiveData()
@@ -22,57 +20,56 @@ namespace QCWCore.Entity
 
         public ReceiveData(string receiveJson)
         {
+            string validateData = "";
             try
             {
                 Dictionary<string, object> receiveDic = JsonConvert.DeserializeObject<Dictionary<string, object>>(receiveJson);
-                Dictionary<string, object> p = JsonConvert.DeserializeObject<Dictionary<string, object>>(receiveDic["paras"].ToString());
-                SetParams(p);
-                _validatedata = receiveDic["ValidateData"].ToString();
-                _isStandard = true;
+                _params = JsonConvert.DeserializeObject<Dictionary<string, object>>(receiveDic["paras"].ToString());
+                validateData = receiveDic["ValidateData"].ToString();
             }
             catch (Exception e)
             {
                 _logger.Error(e.ToString());
-                _isStandard = false;
+                throw new Exception("参数不是标准格式" + e.ToString());
             }
-        }
 
-        public bool IsStandard { get { return _isStandard; } }
-
-        public string ValidateData
-        {
-            set { _validatedata = value; }
-            get { return _validatedata; }
-        }
-        public string Paras
-        {
-            set { _paras = value; }
-            get { return _paras; }
-        }
-
-        public void SetParams(Dictionary<string, object> Params)
-        {
-            _params = Params;
-        }
-
-        public string GetParam(string paramName)
-        {
-            if (!_params.ContainsKey(paramName.Trim()))
+            if (validateData != _validateData)
             {
-                throw new Exception(paramName + "参数不存在！");
+                _logger.Error("非法调用");
+                throw new Exception("非法调用");
             }
-            return _params[paramName.Trim()].ToString();
         }
 
-        public string GetParamNoException(String paramName)
+        public string GetStringMust(string name)
         {
-            if (!_params.ContainsKey(paramName.Trim()))
+            if (_params.ContainsKey(name.Trim()))
+            {
+                return _params[name.Trim()].ToString();
+            }
+            else
+            {
+                throw new Exception(name + "必填项");
+            }
+        }
+
+        public string GetString(string name)
+        {
+            if (!_params.ContainsKey(name.Trim()))
+            {
+                throw new Exception(name + "参数不存在！");
+            }
+            return _params[name.Trim()].ToString();
+        }
+
+        public string GetStringNoException(String name)
+        {
+            if (!_params.ContainsKey(name.Trim()))
             {
                 return "";
             }
             else
             {
-                return _params[paramName.Trim()].ToString();
+                return _params[name.Trim()].ToString();
             }
         }
     }
