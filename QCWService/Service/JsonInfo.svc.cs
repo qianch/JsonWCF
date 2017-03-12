@@ -1,6 +1,9 @@
-﻿using log4net;
+﻿using Autofac;
+using Autofac.Core;
+using log4net;
 using QCWCore.CustomException;
 using QCWCore.Entity;
+using QCWCore.Interface;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -44,7 +47,18 @@ namespace QCWService.Service
         [WebInvoke(Method = "*")]
         public string UserLogin(string receiveJson)
         {
-            return new LoginService(new ReceiveData(receiveJson)).UserLogin().ToString();
+            //return new LoginService(new ReceiveData(receiveJson)).UserLogin().ToString();
+            var builder = new ContainerBuilder();
+            builder.RegisterType<ReceiveData>()
+                   .WithParameter(new NamedParameter("receiveJson", receiveJson))
+                   .As<IReceiveData>();
+            builder.RegisterType<LoginService>();
+
+            using (var container = builder.Build())
+            {
+                var manager = container.Resolve<LoginService>();
+                return manager.UserLogin().ToString();
+            }
         }
 
         [OperationContract]

@@ -1,5 +1,6 @@
 ﻿using log4net;
 using QCWCore.Entity;
+using QCWCore.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace QCWService.Service
     {
         private readonly ILog logger = LogManager.GetLogger(typeof(LoginService));
 
-        public LoginService(ReceiveData receiveData) : base(receiveData)
+        public LoginService(IReceiveData ReceiveData) : base(ReceiveData)
         {
 
         }
@@ -23,8 +24,8 @@ namespace QCWService.Service
         public ReturnData UserLogin()
         {
 
-            string loginID = receiveData.GetStringMust("LoginID");
-            string passWord = receiveData.GetStringMust("Password");
+            string loginID = ReceiveData.GetStringMust("LoginID");
+            string passWord = ReceiveData.GetStringMust("Password");
 
             //TODO
 

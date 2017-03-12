@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using QCWCore.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,25 +31,6 @@ namespace QCWCore.Entity
             _userdata = new Dictionary<string, object>();
             _returnstatus = status;
             _description = msg;
-        }
-
-
-        public ReturnStatus Status
-        {
-            set { _returnstatus = value; }
-            get { return _returnstatus; }
-        }
-
-        public string Description
-        {
-            set { _description = value; }
-            get { return _description; }
-        }
-
-        public Dictionary<string, object> UserData
-        {
-            get { return _userdata; }
-            set { _userdata = value; }
         }
 
         public override string ToString()

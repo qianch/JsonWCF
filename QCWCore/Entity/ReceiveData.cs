@@ -1,5 +1,6 @@
 ﻿using log4net;
 using Newtonsoft.Json;
+using QCWCore.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Text;
 
 namespace QCWCore.Entity
 {
-    public class ReceiveData
+    public class ReceiveData : IReceiveData
     {
         private readonly ILog _logger = LogManager.GetLogger(typeof(ReceiveData));
         private string _validateData = System.Configuration.ConfigurationManager.AppSettings["ValidateData"];

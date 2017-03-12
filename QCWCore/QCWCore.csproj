@@ -61,16 +61,14 @@
     <Compile Include="CustomException\CustomExceptionAttribute.cs" />
     <Compile Include="CustomException\CustomExceptionHandler.cs" />
     <Compile Include="DB\DB_Base.cs" />
+    <Compile Include="Interface\IReceiveData.cs" />
     <Compile Include="Entity\ReceiveData.cs" />
     <Compile Include="Entity\ReturnData.cs" />
     <Compile Include="Entity\ReturnStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Interface\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
