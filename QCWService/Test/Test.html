@@ -1,33 +1,33 @@
 ﻿<!DOCTYPE html>
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
-    <meta charset="utf-8" />
-    <title></title>
-    <script src="JavaScript/jquery-1.10.2.js"></script>
-    <script src="JavaScript/vue.js"></script>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="build/browser.min.js"></script>
+    <script src="build/jquery.min.js"></script>
 </head>
 <body>
-    <div id="app-5">
-        <p>{{message}}</p>
-        <button v-on:click="userLogin">userLogin</button>
-    </div>
+    <div id="rest"></div>
+    <script type="text/babel">
+        var names = ['Alice', 'Emily', 'Kate'];
 
-    <script type="text/javascript">
-        var app5 = new Vue({
-            el: "#app-5",
-            data: {
-                message: "用户登录"
-            },
-            methods: {
-                userLogin: function () {
-                    userLogin.post()
-                }
-            }
+        var RestMessage = React.createClass({
+        handleClick:function(){
+           userLogin.post();
+        },
+        render: function() {
+        return (<button onClick={this.handleClick}>{this.props.name}</button>)
+        }
         });
 
-        var userLogin = new Rest({ LoginID: "QianChen", Password: "loveyou" });
+        ReactDOM.render(
+        <RestMessage name="userLogin" />,
+        document.getElementById('rest')
+        );
 
+        var userLogin = new Rest({ LoginID: "QianChen", Password: "loveyou" });
         function Rest(paras) {
             this.url4Rest = "http://localhost/QCWService/UserLogin";
             this.receive = {
