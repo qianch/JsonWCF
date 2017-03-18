@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="JavaScript/jquery-1.10.2.js"></script>
+    <script src="JavaScript/vue.js"></script>
+</head>
+<body>
+    <div id="app-5">
+        <p>{{message}}</p>
+        <button v-on:click="userLogin">userLogin</button>
+    </div>
+
+    <script type="text/javascript">
+        var app5 = new Vue({
+            el: "#app-5",
+            data: {
+                message: "用户登录"
+            },
+            methods: {
+                userLogin: function () {
+                    userLogin.post()
+                }
+            }
+        });
+
+        var userLogin = new Rest({ LoginID: "QianChen", Password: "loveyou" });
+
+        function Rest(paras) {
+            this.url4Rest = "http://localhost/QCWService/UserLogin";
+            this.receive = {
+                ValidateData: "love",
+                paras: paras
+            };
+        };
+
+        Rest.prototype.post = function () {
+            $.ajax({
+                type: "post",
+                async: false,
+                data: JSON.stringify(this.receive),
+                contentType: "application/json;utf-8",
+                url: this.url4Rest,
+                success: function (result) {
+                    var rtn = JSON.stringify(result);
+                    alert(rtn);
+                },
+                error: function (msg) {
+                    alert(JSON.stringify(msg));
+                }
+            })
+        };
+    </script>
+</body>
+</html>

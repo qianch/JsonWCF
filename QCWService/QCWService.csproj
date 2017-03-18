@@ -84,7 +84,8 @@
     <Content Include="Global.asax" />
     <Content Include="Service\JsonInfo.svc" />
     <Content Include="Test\JavaScript\jquery-1.10.2.js" />
-    <Content Include="Test\WAjax.html" />
+    <Content Include="Test\JavaScript\vue.js" />
+    <Content Include="Test\Test.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
