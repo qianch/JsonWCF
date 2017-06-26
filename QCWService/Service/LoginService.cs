@@ -1,4 +1,5 @@
 ﻿using log4net;
+using QCWCore.DB;
 using QCWCore.Entity;
 using QCWCore.Interface;
 using System;
@@ -28,7 +29,7 @@ namespace QCWService.Service
             string passWord = ReceiveData.GetStringMust("Password");
 
             //TODO
-
+            var users = new DBBase().GetDBContext().Frame_User.All();
             return new ReturnData(new Dictionary<string, object>
             {
                 {"Description","登录成功" },
