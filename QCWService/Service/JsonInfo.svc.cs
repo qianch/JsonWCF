@@ -12,6 +12,7 @@ using System.ServiceModel;
 using System.ServiceModel.Activation;
 using System.ServiceModel.Web;
 using System.Web;
+using SwaggerWcf.Attributes;
 
 namespace QCWService.Service
 {
@@ -22,6 +23,7 @@ namespace QCWService.Service
     {
         private readonly ILog logger = LogManager.GetLogger(typeof(JsonInfo));
 
+        [SwaggerWcfTag("DoWork")]
         [OperationContract]
         [WebInvoke(Method = "*", UriTemplate = "DoWork")]
         public string DoWork()

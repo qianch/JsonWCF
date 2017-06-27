@@ -21,6 +21,7 @@ namespace QCWService
             log4net.Config.XmlConfigurator.Configure();
             //自定义路由
             RouteTable.Routes.Add(new ServiceRoute("", new WebServiceHostFactory(), typeof(JsonInfo)));
+            RouteTable.Routes.Add(new ServiceRoute("api-docs", new WebServiceHostFactory(), typeof(JsonInfo)));
         }
 
         protected void Session_Start(object sender, EventArgs e)

@@ -29,7 +29,7 @@ namespace QCWService.Service
             string passWord = ReceiveData.GetStringMust("Password");
 
             //TODO
-            var users = new DBBase().GetDBContext().Frame_User.All();
+            var users = new DBBase().DBContext.Frame_User.All();
             return new ReturnData(new Dictionary<string, object>
             {
                 {"Description","登录成功" },

@@ -1,6 +1,7 @@
 .gitignore  
 *.rar 
 *.pdb
+packages/
 .vs/
 LogFiles/
 Log/
