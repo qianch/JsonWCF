@@ -13,40 +13,38 @@ using System.ServiceModel.Activation;
 using System.ServiceModel.Web;
 using System.Web;
 using SwaggerWcf.Attributes;
+using System.Net;
 
 namespace QCWService.Service
 {
-    [ServiceContract(Namespace = "")]
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
+    [ServiceBehavior(IncludeExceptionDetailInFaults = true)]
     [CustomExceptionAttribute(typeof(CustomExceptionHandler))]
-    public class JsonInfo
+    [SwaggerWcf("/v1/rest")]
+    public class JsonInfo : IJsonInfo
     {
         private readonly ILog logger = LogManager.GetLogger(typeof(JsonInfo));
 
-        [SwaggerWcfTag("DoWork")]
-        [OperationContract]
-        [WebInvoke(Method = "*", UriTemplate = "DoWork")]
+        [SwaggerWcfTag("Books")]
+        [SwaggerWcfResponse(HttpStatusCode.Created, "Book created, value in the response body with id updated")]
+        [SwaggerWcfResponse(HttpStatusCode.BadRequest, "Bad request", true)]
+        [SwaggerWcfResponse(HttpStatusCode.InternalServerError,
+        "Internal error (can be forced using ERROR_500 as book title)", true)]
         public string DoWork()
         {
             return new ReturnData().ToString();
         }
 
-        [OperationContract]
-        [WebInvoke(Method = "*")]
         public string DoString(string receiveJson)
         {
             return new ReturnData().ToString();
         }
 
-        [OperationContract]
-        [WebInvoke(Method = "*")]
         public Dictionary<string, object> DoDic(Dictionary<string, object> receiveJson)
         {
             return new Dictionary<string, object> { { "receiveJson", receiveJson } };
         }
 
-        [OperationContract]
-        [WebInvoke(Method = "*")]
         public string UserLogin(string receiveJson)
         {
             //return new LoginService(new ReceiveData(receiveJson)).UserLogin().ToString();
@@ -63,15 +61,12 @@ namespace QCWService.Service
             }
         }
 
-        [OperationContract]
-        [WebInvoke(Method = "*")]
         public string User_GetDateTime()
         {
             return new ReturnData(new Dictionary<string, object>
             {
                 { "DateTime", DateTime.Now }
-            })
-            .ToString();
+            }).ToString();
         }
     }
 }

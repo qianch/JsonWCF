@@ -107,6 +107,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\IJsonInfo.cs" />
     <Compile Include="Service\JsonInfo.svc.cs">
       <DependentUpon>JsonInfo.svc</DependentUpon>
     </Compile>
