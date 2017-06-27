@@ -20,31 +20,35 @@ namespace QCWService.Service
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
     [ServiceBehavior(IncludeExceptionDetailInFaults = true)]
     [CustomExceptionAttribute(typeof(CustomExceptionHandler))]
-    [SwaggerWcf("/v1/rest")]
+    [SwaggerWcf("/qcwservice/api")]
     public class JsonInfo : IJsonInfo
     {
         private readonly ILog logger = LogManager.GetLogger(typeof(JsonInfo));
 
-        [SwaggerWcfTag("Books")]
+        [SwaggerWcfTag("Strings")]
+        [SwaggerWcfHeader("clientId", false, "Client ID", "000")]
         [SwaggerWcfResponse(HttpStatusCode.Created, "Book created, value in the response body with id updated")]
         [SwaggerWcfResponse(HttpStatusCode.BadRequest, "Bad request", true)]
         [SwaggerWcfResponse(HttpStatusCode.InternalServerError,
-        "Internal error (can be forced using ERROR_500 as book title)", true)]
-        public string DoWork()
-        {
-            return new ReturnData().ToString();
-        }
-
+            "Internal error (can be forced using ERROR_500 as book title)", true)]
         public string DoString(string receiveJson)
         {
             return new ReturnData().ToString();
         }
 
+        [SwaggerWcfTag("Strings")]
+        public string DoWork()
+        {
+            return new ReturnData().ToString();
+        }
+
+        [SwaggerWcfTag("Strings")]
         public Dictionary<string, object> DoDic(Dictionary<string, object> receiveJson)
         {
             return new Dictionary<string, object> { { "receiveJson", receiveJson } };
         }
 
+        [SwaggerWcfTag("Strings")]
         public string UserLogin(string receiveJson)
         {
             //return new LoginService(new ReceiveData(receiveJson)).UserLogin().ToString();
@@ -61,7 +65,8 @@ namespace QCWService.Service
             }
         }
 
-        public string User_GetDateTime()
+        [SwaggerWcfTag("Strings")]
+        public string GetDateTime()
         {
             return new ReturnData(new Dictionary<string, object>
             {

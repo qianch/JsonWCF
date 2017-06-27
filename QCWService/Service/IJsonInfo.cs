@@ -1,5 +1,6 @@
 ﻿using SwaggerWcf.Attributes;
 using System.Collections.Generic;
+using System.Net;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 
@@ -8,25 +9,24 @@ namespace QCWService.Service
     [ServiceContract(Namespace = "")]
     public interface IJsonInfo
     {
+        [WebInvoke(UriTemplate = "DoString")]
         [OperationContract]
-        [WebInvoke(Method = "*")]
-        [SwaggerWcfPath("Create DoString","Create a book on the Store")]
         string DoString(string receiveJson);
 
         [OperationContract]
-        [WebInvoke(Method = "*", UriTemplate = "DoWork")]
+        [WebInvoke(UriTemplate = "DoWork")]
         string DoWork();
 
         [OperationContract]
-        [WebInvoke(Method = "*")]
+        [WebInvoke(UriTemplate = "DoDic")]
         Dictionary<string, object> DoDic(Dictionary<string, object> receiveJson);
 
         [OperationContract]
-        [WebInvoke(Method = "*")]
+        [WebInvoke(UriTemplate = "UserLogin")]
         string UserLogin(string receiveJson);
 
         [OperationContract]
-        [WebInvoke(Method = "*")]
-        string User_GetDateTime();
+        [WebInvoke(UriTemplate = "GetDateTime")]
+        string GetDateTime();
     }
 }
