@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="QCWService.Service.JsonInfo" CodeBehind="JsonInfo.svc.cs"%>
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="QCWService.Service.JsonInfo" CodeBehind="JsonInfo.svc.cs" Factory="Autofac.Integration.Wcf.AutofacServiceHostFactory, Autofac.Integration.Wcf"%>
