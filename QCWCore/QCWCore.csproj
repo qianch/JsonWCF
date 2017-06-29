@@ -67,8 +67,8 @@
   <ItemGroup>
     <Compile Include="CustomException\CustomExceptionAttribute.cs" />
     <Compile Include="CustomException\CustomExceptionHandler.cs" />
-    <Compile Include="DB\DBBase.cs" />
-    <Compile Include="DB\DBContext.cs" />
+    <Compile Include="DB\DbContext.cs" />
+    <Compile Include="DB\DbFactory.cs" />
     <Compile Include="Interface\IReceiveData.cs" />
     <Compile Include="Entity\ReceiveData.cs" />
     <Compile Include="Entity\ReturnData.cs" />

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace QCWCore.DB
 {
-    public class DBContext : Database<DBContext>
+    public class DbContext : Database<DbContext>
     {
         public Table<dynamic> Frame_User { get; set; }
     }
