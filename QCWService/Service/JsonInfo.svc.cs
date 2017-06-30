@@ -28,10 +28,9 @@ namespace QCWService.Service
 
         [SwaggerWcfTag("Api")]
         [SwaggerWcfHeader("clientId", false, "Client ID", "000")]
-        [SwaggerWcfResponse(HttpStatusCode.Created, "Book created, value in the response body with id updated")]
+        [SwaggerWcfResponse(HttpStatusCode.NotFound, "address is error",true)]
         [SwaggerWcfResponse(HttpStatusCode.BadRequest, "Bad request", true)]
-        [SwaggerWcfResponse(HttpStatusCode.InternalServerError,
-            "Internal error (can be forced using ERROR_500 as book title)", true)]
+        [SwaggerWcfResponse(HttpStatusCode.InternalServerError, "Internal error (Do Fail)", true)]
         public string DoString(string receiveJson)
         {
             return new ReturnData().ToString();
