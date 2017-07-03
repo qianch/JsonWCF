@@ -1,7 +1,9 @@
-﻿using log4net;
-using QCWCore.DB;
-using QCWCore.Entity;
-using QCWCore.Interface;
+﻿using Autofac;
+using Autofac.Integration.Wcf;
+using log4net;
+using QCWService.Domain.FrameUserAggregate;
+using QCWService.Infrastructure;
+using QCWService.Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +15,7 @@ namespace QCWService.Service
     {
         private readonly ILog logger = LogManager.GetLogger(typeof(LoginService));
 
-        public LoginService(IReceiveData ReceiveData) : base(ReceiveData)
+        public LoginService(ReceiveData ReceiveData) : base(ReceiveData)
         {
 
         }
@@ -26,25 +28,28 @@ namespace QCWService.Service
         {
 
             string loginID = ReceiveData.GetStringMust("LoginID");
-            string passWord = ReceiveData.GetStringMust("Password");
+            string password = ReceiveData.GetStringMust("Password");
 
-            //TODO
-            using (var context = new DbFactory().GetDbContext())
-            {
-                var user = context.Frame_User.All();
-                return new ReturnData(new Dictionary<string, object>
+            var user = AutofacHostFactory.Container
+                .Resolve<FrameUserRepository>()
+                .All();
+            return new ReturnData(new Dictionary<string, object>
                 {
                     {"Description","登录成功" },
                     {"UserGuid","UserGuid" },
                     {"DanWeiGuid","DanWeiGuid" },
                     {"DanWeiName","DanWeiName" }
                 });
-            }
         }
 
-        public ReturnData User_Add(ReceiveData receiveData)
+        public ReturnData UserAdd(ReceiveData receiveData)
         {
-            //TODO
+            string loginID = receiveData.GetStringMust("LoginID");
+            string password = receiveData.GetStringMust("Password");
+            string displayName = receiveData.GetStringNoException("DisplayName");
+            AutofacHostFactory.Container
+                .Resolve<FrameUserRepository>()
+                .Add(new FrameUser { LoginID = loginID, UserGuid = Guid.NewGuid(), DisplayName = displayName, Password = password });
             return new ReturnData();
         }
     }

@@ -1,5 +1,4 @@
-﻿using QCWCore.Entity;
-using QCWCore.Interface;
+﻿using QCWService.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -11,7 +10,7 @@ namespace QCWService.Service
 {
     public class BaseService
     {
-        protected IReceiveData ReceiveData;
+        protected ReceiveData ReceiveData;
         protected string validateData = "";
         protected string currentPageIndex = "";
         protected string pageSize = "20";
@@ -21,7 +20,7 @@ namespace QCWService.Service
         protected string endDate = "";
         protected string areaCode = "";
 
-        public BaseService(IReceiveData ReceiveData)
+        public BaseService(ReceiveData ReceiveData)
         {
             this.ReceiveData = ReceiveData;
         }
