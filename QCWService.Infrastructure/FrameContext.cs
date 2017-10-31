@@ -8,6 +8,8 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using QCService.Interceptor;
+using Autofac.Extras.DynamicProxy;
 
 namespace QCWService.Infrastructure
 {
@@ -20,7 +22,7 @@ namespace QCWService.Infrastructure
 
         public FrameContext()
         {
-            _connectionString = _connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["Frame_connectionString"].ConnectionString;
+            _connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["Frame_connectionString"].ConnectionString;
         }
 
         public FrameContext Init()

@@ -26,10 +26,6 @@ namespace QCWService.Service
         private readonly ILog logger = LogManager.GetLogger(typeof(JsonInfo));
 
         [SwaggerWcfTag("Api")]
-        [SwaggerWcfHeader("clientId", false, "Client ID", "000")]
-        [SwaggerWcfResponse(HttpStatusCode.NotFound, "address is error", true)]
-        [SwaggerWcfResponse(HttpStatusCode.BadRequest, "Bad request", true)]
-        [SwaggerWcfResponse(HttpStatusCode.InternalServerError, "Internal error (Do Fail)", true)]
         public string DoString(string receiveJson)
         {
             return new ReturnData().ToString();
@@ -50,11 +46,13 @@ namespace QCWService.Service
         [SwaggerWcfTag("Api")]
         public string UserLogin(string receiveJson)
         {
-            return AutofacHostFactory
-                .Container
-                .Resolve<LoginService>(new NamedParameter("ReceiveData", new ReceiveData(receiveJson)))
-                .UserLogin()
-                .ToString();
+            return new LoginService(new ReceiveData(receiveJson)).UserLogin().ToString();
+        }
+
+        [SwaggerWcfTag("Api")]
+        public string AddUser(string receiveJson)
+        {
+            return new LoginService(new ReceiveData(receiveJson)).UserAdd().ToString();
         }
 
         [SwaggerWcfTag("Api")]

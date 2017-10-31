@@ -9,11 +9,10 @@
     <script src="build/jquery.min.js"></script>
 </head>
 <body>
-    <div id="rest"></div>
+    <div id="login"></div>
+    <div id="addUser"></div>
     <script type="text/babel">
-        var names = ['Alice', 'Emily', 'Kate'];
-
-        var RestMessage = React.createClass({
+        var Login = React.createClass({
         handleClick:function(){
            userLogin.post();
         },
@@ -23,13 +22,29 @@
         });
 
         ReactDOM.render(
-        <RestMessage name="userLogin" />,
-        document.getElementById('rest')
+        <Login name="userLogin" />,
+        document.getElementById('login')
         );
 
-        var userLogin = new Rest({ LoginID: "QianChen", Password: "loveyou" });
-        function Rest(paras) {
-            this.url4Rest = "http://localhost/qcwservice/api/UserLogin";
+        var Add = React.createClass({
+        handleClick:function(){
+        addUser.post();
+        },
+        render: function() {
+        return (
+        <button onClick={this.handleClick}>{this.props.name}</button>)
+        }
+        });
+
+        ReactDOM.render(
+        <Add name="addUser" />,
+        document.getElementById('addUser')
+        );
+
+        var userLogin = new Rest({ LoginID: "QianChen", Password: "loveyou" },"UserLogin");
+        var addUser = new Rest({LoginID:"QianChen",Password:"loveyou",DisplayName:"芒果"},"AddUser");
+        function Rest(paras,callName) {
+            this.url4Rest = "http://localhost/qcwservice/api/" + callName;
             this.receive = {
                 ValidateData: "love",
                 paras: paras

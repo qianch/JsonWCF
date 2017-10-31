@@ -22,6 +22,7 @@
     <UseGlobalApplicationHostFile />
     <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
     <TargetFrameworkProfile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -46,8 +47,14 @@
     <Reference Include="Autofac, Version=4.6.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\nuget\packages\Autofac.4.6.0\lib\net45\Autofac.dll</HintPath>
     </Reference>
+    <Reference Include="Autofac.Extras.DynamicProxy, Version=4.2.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\nuget\packages\Autofac.Extras.DynamicProxy.4.2.1\lib\net45\Autofac.Extras.DynamicProxy.dll</HintPath>
+    </Reference>
     <Reference Include="Autofac.Integration.Wcf, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\nuget\packages\Autofac.Wcf.4.0.0\lib\net45\Autofac.Integration.Wcf.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\nuget\packages\Castle.Core.4.0.0\lib\net45\Castle.Core.dll</HintPath>
     </Reference>
     <Reference Include="Dapper.Contrib, Version=1.50.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\nuget\packages\Dapper.Contrib.1.50.0\lib\net45\Dapper.Contrib.dll</HintPath>
@@ -55,6 +62,7 @@
     <Reference Include="Dapper.Rainbow, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\nuget\packages\Dapper.Rainbow.0.1.2\lib\net40\Dapper.Rainbow.dll</HintPath>
     </Reference>
+    <Reference Include="Dapper.Rainbow.MySql, Version=0.6.1.0, Culture=neutral, PublicKeyToken=null" />
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\nuget\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
@@ -122,6 +130,10 @@
     <ProjectReference Include="..\JsonBehavior\JsonBehavior.csproj">
       <Project>{ed515b6a-56da-49ac-aa93-086a496fa740}</Project>
       <Name>JsonBehavior</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QCService.Interceptor\QCService.Interceptor.csproj">
+      <Project>{f91d8abb-858a-4ab9-bcdd-4c53265aeb4d}</Project>
+      <Name>QCService.Interceptor</Name>
     </ProjectReference>
     <ProjectReference Include="..\QCWService.Domain\QCWService.Domain.csproj">
       <Project>{DCC27202-09E4-480D-B1A5-B414F66A73F0}</Project>

@@ -5,6 +5,9 @@ using System.Web;
 using Autofac;
 using QCWService.Infrastructure.Repositories;
 using QCWService.Domain.FrameUserAggregate;
+using Autofac.Extras.DynamicProxy;
+using QCService.Interceptor;
+using Castle.DynamicProxy;
 
 namespace QCWService.Infrastructure.AutofacModules
 {
@@ -12,13 +15,21 @@ namespace QCWService.Infrastructure.AutofacModules
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<FrameUserRepository>()
-                .As<FrameUserRepository>()
+            builder.RegisterType<AuthorizeInterceptor>()
+                .As<AuthorizeInterceptor>()
                 .InstancePerLifetimeScope();
+
+            builder.RegisterType<FrameUserRepository>()
+                .As<IFrameUserRepository>()
+                .InstancePerLifetimeScope()
+                .EnableInterfaceInterceptors()
+                .InterceptedBy(typeof(AuthorizeInterceptor));
 
             builder.RegisterType<FrameContext>()
                 .As<FrameContext>()
-                .InstancePerLifetimeScope();
+                .InstancePerLifetimeScope()
+                .EnableClassInterceptors()
+                .InterceptedBy(typeof(AuthorizeInterceptor));
 
         }
     }

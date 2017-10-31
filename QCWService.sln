@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonBehavior", "JsonBehavior\JsonBehavior.csproj", "{ED515B6A-56DA-49AC-AA93-086A496FA740}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QCWService.Infrastructure", "QCWService.Infrastructure\QCWService.Infrastructure.csproj", "{A09D740E-B593-4501-965A-5892A37689EC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QCWService.Domain", "QCWService.Domain\QCWService.Domain.csproj", "{DCC27202-09E4-480D-B1A5-B414F66A73F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QCService.Interceptor", "QCService.Interceptor\QCService.Interceptor.csproj", "{F91D8ABB-858A-4AB9-BCDD-4C53265AEB4D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,8 +35,15 @@ Global
 		{DCC27202-09E4-480D-B1A5-B414F66A73F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCC27202-09E4-480D-B1A5-B414F66A73F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCC27202-09E4-480D-B1A5-B414F66A73F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F91D8ABB-858A-4AB9-BCDD-4C53265AEB4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F91D8ABB-858A-4AB9-BCDD-4C53265AEB4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F91D8ABB-858A-4AB9-BCDD-4C53265AEB4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F91D8ABB-858A-4AB9-BCDD-4C53265AEB4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2F2CEB71-9061-4FB7-BDE9-8A6ABDE0CF54}
 	EndGlobalSection
 EndGlobal

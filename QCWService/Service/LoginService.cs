@@ -29,10 +29,9 @@ namespace QCWService.Service
 
             string loginID = ReceiveData.GetStringMust("LoginID");
             string password = ReceiveData.GetStringMust("Password");
-
-            var user = AutofacHostFactory.Container
-                .Resolve<FrameUserRepository>()
-                .All();
+            FrameContext context = AutofacHostFactory.Container
+               .Resolve<FrameContext>();
+            
             return new ReturnData(new Dictionary<string, object>
                 {
                     {"Description","登录成功" },
@@ -42,13 +41,13 @@ namespace QCWService.Service
                 });
         }
 
-        public ReturnData UserAdd(ReceiveData receiveData)
+        public ReturnData UserAdd()
         {
-            string loginID = receiveData.GetStringMust("LoginID");
-            string password = receiveData.GetStringMust("Password");
-            string displayName = receiveData.GetStringNoException("DisplayName");
+            string loginID = ReceiveData.GetStringMust("LoginID");
+            string password = ReceiveData.GetStringMust("Password");
+            string displayName = ReceiveData.GetStringNoException("DisplayName");
             AutofacHostFactory.Container
-                .Resolve<FrameUserRepository>()
+                .Resolve<IFrameUserRepository>()
                 .Add(new FrameUser { LoginID = loginID, UserGuid = Guid.NewGuid(), DisplayName = displayName, Password = password });
             return new ReturnData();
         }

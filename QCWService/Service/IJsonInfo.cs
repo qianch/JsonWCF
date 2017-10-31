@@ -9,9 +9,9 @@ namespace QCWService.Service
     [ServiceContract(Namespace = "")]
     public interface IJsonInfo
     {
+        [OperationContract]
         [WebInvoke(UriTemplate = "DoString")]
         [SwaggerWcfPath("参数为JSON字符串测试")]
-        [OperationContract]
         string DoString(string receiveJson);
 
         [OperationContract]
@@ -28,6 +28,11 @@ namespace QCWService.Service
         [SwaggerWcfPath("用户登录")]
         [WebInvoke(UriTemplate = "UserLogin")]
         string UserLogin(string receiveJson);
+
+        [OperationContract]
+        [SwaggerWcfPath("新增用户")]
+        [WebInvoke(UriTemplate = "AddUser")]
+        string AddUser(string receiveJson);
 
         [OperationContract]
         [SwaggerWcfPath("服务器时间")]
