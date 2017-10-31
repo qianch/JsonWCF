@@ -25,7 +25,7 @@ namespace QCWService.Infrastructure
             _connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["Frame_connectionString"].ConnectionString;
         }
 
-        public FrameContext Init()
+        public virtual FrameContext Init()
         {
             return Init(Connection as System.Data.Common.DbConnection, commandTimeout: 200);
         }

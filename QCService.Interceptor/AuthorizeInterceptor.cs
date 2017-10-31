@@ -13,7 +13,7 @@ namespace QCService.Interceptor
         public void Intercept(IInvocation invocation)
         {
             var args = invocation.Arguments;
-            _logger.Info("调用 Author 拦截器");
+            _logger.Info(invocation.Method.Name);
             invocation.Proceed();
         }
     }

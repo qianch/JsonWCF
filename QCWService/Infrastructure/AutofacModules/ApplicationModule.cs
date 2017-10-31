@@ -30,7 +30,6 @@ namespace QCWService.Infrastructure.AutofacModules
                 .InstancePerLifetimeScope()
                 .EnableClassInterceptors()
                 .InterceptedBy(typeof(AuthorizeInterceptor));
-
         }
     }
 }
