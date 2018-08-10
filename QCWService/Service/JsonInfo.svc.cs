@@ -14,6 +14,7 @@ using System.Net;
 using Autofac.Integration.Wcf;
 using QCWService.Domain.Exceptions;
 using QCWService.Infrastructure;
+using QCWService.Domain.FrameUserAggregate;
 
 namespace QCWService.Service
 {
@@ -61,7 +62,8 @@ namespace QCWService.Service
             return new ReturnData(new Dictionary<string, object>
             {
                 { "DateTime", DateTime.Now }
-            }).ToString();
+            })
+            .ToString();
         }
     }
 }

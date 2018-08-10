@@ -8,6 +8,7 @@ using QCWService.Domain.FrameUserAggregate;
 using Autofac.Extras.DynamicProxy;
 using QCService.Interceptor;
 using Castle.DynamicProxy;
+using QCWService.Service;
 
 namespace QCWService.Infrastructure.AutofacModules
 {
